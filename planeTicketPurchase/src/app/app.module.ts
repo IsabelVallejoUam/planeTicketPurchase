@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,9 +13,11 @@ import { SearchFlightComponent } from './search-flight/search-flight.component';
 import { FlightDetailsComponent } from './flight-details/flight-details.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { FlightManagmentComponent } from './flight-managment/flight-managment.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CalendarComponent } from './calendar/calendar.component';
+import { FlightsComponent } from './flights/flights.component';
+import { MakeReservationComponent } from './make-reservation/make-reservation.component';
+import { SeatSelectorComponent } from './seat-selector/seat-selector.component';
+import { PassangerFormComponent } from './passanger-form/passanger-form.component';
+import { IndexReservationsComponent } from './index-reservations/index-reservations.component';
 
 @NgModule({
   declarations: [
@@ -25,13 +29,17 @@ import { CalendarComponent } from './calendar/calendar.component';
     FlightDetailsComponent,
     ReservationComponent,
     FlightManagmentComponent,
-    CalendarComponent
+    FlightsComponent,
+    MakeReservationComponent,
+    SeatSelectorComponent,
+    PassangerFormComponent,
+    IndexReservationsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    NgbModule,
+    ReactiveFormsModule,
+    HttpClientModule,
 
   ],
   providers: [],

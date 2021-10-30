@@ -1,4 +1,5 @@
-<div class="container"  >
+<div class="container">
+  <div class="flight-container"  *ngFor="let flight of flights">
     <div>
       <span class="total-time" id="duration{{flight.id}}" ></span><br>
       <span class="total-time" id="date-flight{{flight.id}}"></span>
@@ -29,3 +30,4 @@
     </span>
     <span class="price"> ${{ flight.price }}COP </span>
   </div>
+</div>

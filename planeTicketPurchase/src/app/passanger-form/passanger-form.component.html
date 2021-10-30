@@ -1,0 +1,46 @@
+<div class="container">
+    <form [formGroup]="PassangerForm" class="form" (ngSubmit)="submitForm()">
+      <div>
+        <input
+        required
+          formControlName="name"
+          type="text"
+          class="form-control"
+          placeholder="Ingrese Nombre"
+        />
+      </div>
+      <div>
+        <input
+        required
+          formControlName="lastname"
+          type="text"
+          class="form-control"
+          placeholder="Ingrese Apellido"
+        />
+      </div>
+      <div>
+          <select formControlName="id_type"  class="form-control" >
+            <option value="" selected disabled >SELECCIONE TIPO DE ID</option>    
+            <option value="cc"> Cedula.Ciudadania</option>
+            <option value="ti"> Tarjeta.Identidad</option>
+            <option value="pasaporte"> Pasaporte </option>
+        </select>
+      </div>
+    
+      <div>
+        <input
+        required
+          formControlName="age"
+          type="number"
+          class="form-control"
+          placeholder="Ingrese Edad"
+        />
+      </div>
+    
+      <button type="submit" [disabled]="!PassangerForm.valid" >Submit</button>
+    
+    </form>
+    
+    
+    
+    </div>
