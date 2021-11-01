@@ -28,8 +28,5 @@ ngOnInit(): void {
 }
 
 
-submitForm() {
-  
-}
 
 }

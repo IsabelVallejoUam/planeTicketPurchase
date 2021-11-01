@@ -1,0 +1,11 @@
+.container{
+    margin-top: 10%;
+}
+
+span, input{
+    width: 30%;
+}
+
+.option{
+    display: flex;
+}

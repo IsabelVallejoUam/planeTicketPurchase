@@ -3,7 +3,6 @@
     border-style: groove;
     text-align: center;
     margin-top: 5%;
-    margin-left: 10%;
 }
 .total-time{
     margin-left: -40%;
@@ -31,25 +30,3 @@
     font-size: xx-large;
     font-weight:900;
 }
-
-.start-info{
-    margin-left: 28%;
-}
-
-.info{
-    margin-top: 1%;
-    text-align: left;
-    margin-left: 33%;
-    padding: 0%  5% 2% 7% ;
-}
-
-h3{
-    font-weight: bolder;
-}
-
-.reservation-code{
-    font-weight: bolder;
-    font-size: large;
-    margin-bottom: 3%;
-}
-

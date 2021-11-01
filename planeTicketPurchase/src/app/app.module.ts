@@ -19,6 +19,7 @@ import { SeatSelectorComponent } from './seat-selector/seat-selector.component';
 import { PassangerFormComponent } from './passanger-form/passanger-form.component';
 import { IndexReservationsComponent } from './index-reservations/index-reservations.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { FilterFlightsComponent } from './filter-flights/filter-flights.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ReservationComponent } from './reservation/reservation.component';
     MakeReservationComponent,
     SeatSelectorComponent,
     PassangerFormComponent,
-    IndexReservationsComponent
+    IndexReservationsComponent,
+    FilterFlightsComponent
   ],
   imports: [
     BrowserModule,

@@ -141,4 +141,10 @@ export class ReservationComponent implements OnInit {
     });
   }
 
+  cancelReservation(){
+
+    window.alert("RESERVA BORRADA    "+ this.reservation.code );
+    this.reservationService.deleteReservation(this.reservation.code);
+  }
+
 }

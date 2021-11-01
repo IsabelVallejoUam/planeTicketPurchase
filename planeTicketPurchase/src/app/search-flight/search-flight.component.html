@@ -1,1 +1,40 @@
-<p>search-flight works!</p>
+<div class="container">
+<form [formGroup]="flightForm" class="form" (ngSubmit)="submitForm()">
+    <span>
+        CIUDAD SALIDA <br>
+        <span class="option"> 
+            <select formControlName="city_dep"  class="form-control" >
+              <option value="" selected disabled >SELECCIONE CIUDAD SALIDA</option>    
+              <option *ngFor="let city of cities" value="{{city.id}}" required> {{city.name}} </option>
+          </select>
+        </span>
+        CIUDAD LLEGADA <br>
+        <span  class="option"> 
+            <select formControlName="city_arr"  class="form-control" >
+              <option value="" selected disabled >SELECCIONE CIUDAD LLEGADA</option>    
+              <option *ngFor="let city of cities" value="{{city.id}}" required> {{city.name}} </option>
+          </select>
+        </span>
+        <span> FECHA VUELO
+            <input
+              formControlName="date_dep"
+              type="date"
+              class="form-control"
+              placeholder="FECHA SALIDA"
+            />
+          </span>
+          <!-- <div>
+            <input
+            required
+              formControlName="date_arr"
+              type="date"
+              class="form-control"
+              placeholder="FECHA REGRESO"
+            />
+          </div> -->
+          
+        <button type="submit" [disabled]="!flightForm.valid" >Submit</button>
+
+    </span>
+</form>
+</div>

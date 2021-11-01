@@ -10,6 +10,8 @@ import { SearchReservationComponent } from './search-reservation/search-reservat
 import { SearchFlightComponent } from './search-flight/search-flight.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { FlightManagmentComponent } from './flight-managment/flight-managment.component';
+import { MakeReservationComponent } from './make-reservation/make-reservation.component';
+import { FilterFlightsComponent } from './filter-flights/filter-flights.component';
 
 
 const routes: Routes = [
@@ -21,7 +23,10 @@ const routes: Routes = [
   { path: 'searchFlight', component: SearchFlightComponent },
   { path: 'flight/:id', component: FlightDetailsComponent},
   { path: 'reservation/:code', component: ReservationComponent},
-  {path: 'flightDashboard', component: FlightManagmentComponent }
+  { path: 'flightDashboard', component: FlightManagmentComponent },
+  { path: 'newReservation', component: MakeReservationComponent},
+  { path: 'filtered-flights/:city1/:city2', component: FilterFlightsComponent},
+
 
   
 ];

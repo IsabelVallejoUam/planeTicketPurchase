@@ -1,57 +1,71 @@
 <div class="container">
     <form [formGroup]="flightForm" class="form" (ngSubmit)="submitForm()">
-      <div>
-        <input
-        required
-          formControlName="name"
-          type="text"
-          class="form-control"
-          placeholder="ENTER NAME"
-        />
-      </div>
-      <div>
-          <select formControlName="genre_id"  class="form-control" >
-            <option value="" selected disabled >SELECT GENRE</option>    
-            <option *ngFor="let airport of airports" value="{{airport.id}}" required> {{airport.name}} </option>
-        </select>
-      </div>
-      <div>
-        <textarea
-        required
-        rows="3"
-          formControlName="synopsis"
-          type="text"
-          class="form-control"
-          placeholder="ENTER SYNOPSIS"
-        ></textarea>
-      </div>
-      <div>
-        <input
-        required
-          formControlName="duration"
-          type="number"
-          class="form-control"
-          placeholder="ENTER DURATION (MIN)"
-        />
-      </div>
-      <div>
-        <input
-        required
-          formControlName="thumbnail_url"
-          type="text"
-          class="form-control"
-          placeholder="ENTER IMAGE URL"
-        />
-      </div>
-      <div>
-        <textarea
-        rows="3"
-          formControlName="keywords"
-          type="text"
-          class="form-control"
-          placeholder="ENTER KEYWORDS"
-        ></textarea>
-      </div>
+      AEROPUERTO SALIDA <br>
+        <span class="option"> 
+            <select formControlName="departure_airport"  class="form-control" required>
+              <option value="" selected disabled >SELECCIONE AEROPUERTO SALIDA</option>    
+              <option *ngFor="let airport of airports" value="{{airport.id}}" required> {{airport.name}} </option>
+          </select>
+        </span>
+        AEROPUERTO LLEGADA <br>
+        <span  class="option"> 
+            <select formControlName="destination_airport"  class="form-control" required>
+              <option value="" selected disabled >SELECCIONE AEROPUERTO LLEGADA</option>    
+              <option *ngFor="let airport of airports" value="{{airport.id}}" required> {{airport.name}} </option>
+          </select>
+        </span>
+        <span> FECHA VUELO
+            <input
+            required
+              formControlName="dateTime"
+              type="date"
+              class="form-control"
+              placeholder="FECHA SALIDA"
+            />
+          </span>
+          <span> HORA SALIDA
+            <input
+            required
+              formControlName="time"
+              type="hour"
+              class="form-control"
+              placeholder="HORA"
+            />
+          </span>
+          <span> DURACION <i>(min)</i>
+            <input
+            required
+              formControlName="duration"
+              type="number"
+              class="form-control"
+              placeholder="DURACION"
+            />
+          </span>
+          AVION <br>
+        <span  class="option"> 
+            <select formControlName="plane_id"  class="form-control" required>
+              <option value="" selected disabled >SELECCIONE AVION</option>    
+              <option *ngFor="let plane of airplanes" value="{{plane.id}}" required> {{plane.model}} </option>
+          </select>
+        </span>
+        <span> AEROLINEA
+          <input
+          required
+            formControlName="airline"
+            type="text"
+            class="form-control"
+            placeholder="Avianca"
+          />
+        </span>
+          <span> PRECIO COP
+            <input
+            required
+              formControlName="price"
+              type="number"
+              class="form-control"
+              placeholder="PRECIO"
+            />
+          </span>
     
       <button type="submit" [disabled]="!flightForm.valid" >Submit</button>
     

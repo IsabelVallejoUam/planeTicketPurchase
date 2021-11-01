@@ -1,0 +1,13 @@
+.ind-service{
+    display: grid;
+    margin-top: 2%;
+}
+
+button{
+    margin: 1% 1% 3% 2%;
+}
+
+.service-info{
+    margin-left: 30%;
+    display: grid;
+}

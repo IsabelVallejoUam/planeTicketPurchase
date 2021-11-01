@@ -35,29 +35,12 @@
             <div id="landing-airport{{reservation.flight.id}}"> <b> Aeropuerto Aterrizaje: </b></div>
           </div>
         </div>
-        <div class="passangers">
-          <h3>PASAJEROS</h3>
-          <div class="info" *ngFor="let passanger of reservation.passangers">
-            <div><b>NOMBRE: </b>{{passanger.name}} {{passanger.lastname}}</div>
-            <div><b>ID: </b>{{passanger.id_type}}:{{passanger.id}}</div>
-            <div><b>EDAD: </b> {{passanger.age}}</div>
-            <div *ngIf="passanger.seat != undefined"> {{passanger.seat}}</div>
-            <div class="linea" style="border-style: groove; margin-left: -15% !important; width: 50%;"> </div>
-          </div>
-        </div>
-        <div class="services">
-          <h3>SERVICIOS</h3>
-          <div class=" info" *ngFor="let service of reservation.Service">
-            <div><b>NOMBRE: </b>{{service.name}}</div>
-            <div><b>DESCRIPCION: </b>{{service.description}}</div>
-            <div><b>PRECIO: </b>{{service.price}}COP</div>
-          </div>
-        </div>
         <h3>PRECIO TOTAL</h3>
         <div class="Reservation-info info">
           <div> <b>Precio Reserva: </b>{{reservation.price}}COP</div>
         </div>
         <div class="actions info">
+          <button type="submit" routerLink="/reservation/{{reservation.code}}">Mas Información</button>
             <button type="submit" routerLink="/reservations" (click)="cancelReservation(reservation.code)">Cancelar Reserva</button>
         </div>
       </div>

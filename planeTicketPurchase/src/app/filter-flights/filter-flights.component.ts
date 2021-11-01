@@ -1,55 +1,41 @@
+
 import { Component, OnInit } from '@angular/core';
 import { City } from '../models/city-model';
 import { Flight } from '../models/flight-model';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Airport } from '../models/airport-model';
-
 import { AirportsService } from '../services/airports.service';
 import { CitiesService } from '../services/cities.service';
 import { FlightsService } from '../services/flights.service';
-import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
-  selector: 'app-flight-details',
-  templateUrl: './flight-details.component.html',
-  styleUrls: ['./flight-details.component.css']
+  selector: 'app-filter-flights',
+  templateUrl: './filter-flights.component.html',
+  styleUrls: ['./filter-flights.component.css']
 })
-export class FlightDetailsComponent implements OnInit {
+export class FilterFlightsComponent implements OnInit {
 
-  constructor(private cityService:CitiesService, private flightService:FlightsService,  private route: ActivatedRoute, private airportsService:AirportsService) { }
-
-  flight!: Flight;
+  flights: Flight[] = [];
   cities: City[] = [];
   airports: Airport[] = [];
 
-  ngOnInit(): void {
+  constructor(private cityService:CitiesService, private flightService:FlightsService, private airportsService:AirportsService, private route: ActivatedRoute) { }
+
+  ngOnInit() {
     this.getCities();
-    this.getFlight();
+    this.getFlights();
     this.getAirports();
   }
 
-  
   ngAfterViewInit(): void{
     this.appendInfo();
   }
 
-  appendInfo(){
-      this.transfromTime(this.flight.duration, this.flight.id);
-      this.getHoursMinutes(this.flight.dateTime, this.flight.duration, this.flight.id);
-      this.getDepDate(this.flight.dateTime, this.flight.id);
-      this.getCityAlias(this.flight.id, this.flight.departure_airport, this.flight.destination_airport);
-      this.getAirportName(this.flight.departure_airport, this.flight.destination_airport);
-  }
-
-  transfromTime(min: number, id: number): void {
-    var hours = Math.floor(min / 60);          
-    var minutes = min % 60;
-    var text = document.createTextNode("Duracion vuelo: "+hours+"H "+minutes+"Min");
-    document.getElementById("duration"+id)?.appendChild(text)
-  }
-
-  getFlight(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.flightService.getFlight(id).subscribe(flight => this.flight = flight);
+  getFlights(): void {
+    const city1 = Number(this.route.snapshot.paramMap.get('city1'));
+    const city2 = Number(this.route.snapshot.paramMap.get('city2'));
+    this.flightService.getFlightsCity(city1, city2).subscribe(flights => this.flights = flights);
   }
 
   getCities(): void {
@@ -60,7 +46,22 @@ export class FlightDetailsComponent implements OnInit {
     this.airportsService.getAirports().subscribe(airports => {this.airports = airports});
   }
 
-  
+  transfromTime(min: number, id: number): void {
+    var hours = Math.floor(min / 60);          
+    var minutes = min % 60;
+    var text = document.createTextNode("Duracion vuelo: "+hours+"H "+minutes+"Min");
+    document.getElementById("duration"+id)?.appendChild(text)
+  }
+
+  appendInfo(){
+    this.flights.forEach(element => {
+      this.transfromTime(element.duration, element.id);
+      this.getHoursMinutes(element.dateTime, element.duration, element.id);
+      this.getDepDate(element.dateTime, element.id);
+      this.getCityAlias(element.id, element.departure_airport, element.destination_airport);
+    });
+  }
+
   getHoursMinutes(date: Date, min:number, id: number): void{
     //Departure TIME
     var hour = date.getHours();
@@ -110,21 +111,5 @@ export class FlightDetailsComponent implements OnInit {
     });
   }
 
-  getAirportName(id1:number, id2:number): void{
-    this.airports.forEach(airport => {
-      if(airport.id == id1){
-        var text = document.createTextNode(airport.name);
-            document.getElementById("depart-airport")?.appendChild(text)
-      }
-      if(airport.id == id2){
-        var text = document.createTextNode(airport.name);
-            document.getElementById("landing-airport")?.appendChild(text)
-      }
-    });
-  }
-
-  Reservavisible = false;
-  showForm(){
-    this.Reservavisible = true;
-  }
+  
 }

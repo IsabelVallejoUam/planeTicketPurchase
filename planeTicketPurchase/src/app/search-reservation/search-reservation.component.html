@@ -13,32 +13,9 @@
         </div>
         <button type="submit" [disabled]="!searchForm.valid" >Submit</button>
         </form>
+        <span class="muted"> La carga puede demorar</span>
     </div>
-    <div class="result-box" *ngIf="loadComponent">
-        <!-- <div class="result-container">
-            <div class="flight-info">
-              <span >Estado : ACTIVO</span><br>
-              <span >Fecha vuelo: 00/22/22</span>
-            </div>
-            <span class="time-location-info">
-              <span class="hour-city-group" style="width: 137px;">
-                <span class="text">SALIDA</span>
-                <span class="hour">04:28</span>
-                <span class="city">MDE</span>
-              </span>
-              <span class="hour-city-group">
-                <span class="text">ATERRIZAJE</span>
-                <span class="hour">05:25</span>
-                <span class="city"></span>BOG
-              </span>
-            </span>
-            <div class="flight-info">
-            <span >Duracion vuelo: 0h 57m</span><br>
-            </div>
-            <div class="actions">
-                <button style="margin-right: 2%;"> See Details</button>
-                <button> Cancel</button>
-            </div> 
-        </div>-->
+    <div class="result-box" *ngIf="resultComponent">
+        <app-reservation></app-reservation>
     </div>
 </div>

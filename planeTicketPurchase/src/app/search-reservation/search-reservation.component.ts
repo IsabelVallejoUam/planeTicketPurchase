@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 import { ReservationService } from '../services/reservations.service';
@@ -13,21 +14,22 @@ import { ReservationService } from '../services/reservations.service';
 })
 export class SearchReservationComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private reservationService: ReservationService, private router:Router) { }
+  constructor(private location: Location, private fb: FormBuilder, private reservationService: ReservationService, private router:Router) { }
 
   searchForm = this.fb.group({
     code: [''],
   });
 
-  loadComponent = false;
+  resultComponent = false;
 
   ngOnInit(): void {
   }
 
+  //ES LENTO PERO SIRVE
   submitForm() {
     let code = this.searchForm.get('code')!.value;
-    this.loadComponent = true;
-    this.router.navigate(['/reservation/'+code])
+    this.resultComponent = true;
+    this.location.replaceState('/reservation/'+code);
     
   }
 
