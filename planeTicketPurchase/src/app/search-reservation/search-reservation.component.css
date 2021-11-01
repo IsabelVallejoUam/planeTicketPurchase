@@ -1,0 +1,50 @@
+.container{
+    padding: 2%;
+    border-style: groove;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.search-box{
+    margin-bottom: 10%;
+}
+
+.hour-city-group{
+    margin: 0% 1.5% 3% 1.5%;
+    display: inline-grid;
+    font-size: large;
+    font-weight: bolder;
+}
+
+.text{
+    margin-bottom: 10px;
+    font-size: x-large;
+}
+
+.flight-info{
+    margin-bottom: 3%;
+    font-size: large;
+}
+
+.flight-info span{
+    color: blueviolet;
+    padding-bottom: 3%;
+}
+
+.form{
+    margin-top: 1.5%;
+}
+
+button{
+    padding: .5%;
+}
+
+input{
+    padding: .5%;
+    margin-right: 1%;
+}
+
+label{
+    font-size: large;
+    font-weight: bolder;
+}

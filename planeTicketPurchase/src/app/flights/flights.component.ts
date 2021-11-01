@@ -18,7 +18,7 @@ export class FlightsComponent implements OnInit {
   cities: City[] = [];
   airports: Airport[] = [];
 
-  constructor(private cityService:CitiesService, private flightService:FlightsService,  private router:Router, private airportsService:AirportsService) { }
+  constructor(private cityService:CitiesService, private flightService:FlightsService, private airportsService:AirportsService) { }
 
   ngOnInit() {
     this.getCities();

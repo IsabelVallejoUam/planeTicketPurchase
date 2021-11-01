@@ -1,1 +1,62 @@
-<p>flight-managment works!</p>
+<div class="container">
+    <form [formGroup]="flightForm" class="form" (ngSubmit)="submitForm()">
+      <div>
+        <input
+        required
+          formControlName="name"
+          type="text"
+          class="form-control"
+          placeholder="ENTER NAME"
+        />
+      </div>
+      <div>
+          <select formControlName="genre_id"  class="form-control" >
+            <option value="" selected disabled >SELECT GENRE</option>    
+            <option *ngFor="let airport of airports" value="{{airport.id}}" required> {{airport.name}} </option>
+        </select>
+      </div>
+      <div>
+        <textarea
+        required
+        rows="3"
+          formControlName="synopsis"
+          type="text"
+          class="form-control"
+          placeholder="ENTER SYNOPSIS"
+        ></textarea>
+      </div>
+      <div>
+        <input
+        required
+          formControlName="duration"
+          type="number"
+          class="form-control"
+          placeholder="ENTER DURATION (MIN)"
+        />
+      </div>
+      <div>
+        <input
+        required
+          formControlName="thumbnail_url"
+          type="text"
+          class="form-control"
+          placeholder="ENTER IMAGE URL"
+        />
+      </div>
+      <div>
+        <textarea
+        rows="3"
+          formControlName="keywords"
+          type="text"
+          class="form-control"
+          placeholder="ENTER KEYWORDS"
+        ></textarea>
+      </div>
+    
+      <button type="submit" [disabled]="!flightForm.valid" >Submit</button>
+    
+    </form>
+    
+    
+    
+</div>

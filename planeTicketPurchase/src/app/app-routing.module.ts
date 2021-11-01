@@ -6,19 +6,24 @@ import { FlightsComponent } from './flights/flights.component';
 import { IndexReservationsComponent } from './index-reservations/index-reservations.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { ReservationComponent } from './reservation/reservation.component';
+import { SearchReservationComponent } from './search-reservation/search-reservation.component';
 import { SearchFlightComponent } from './search-flight/search-flight.component';
+import { ReservationComponent } from './reservation/reservation.component';
+import { FlightManagmentComponent } from './flight-managment/flight-managment.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'flights', component: FlightsComponent },
-  { path: 'searchReservation', component: ReservationComponent },
+  { path: 'searchReservation', component: SearchReservationComponent },
   { path: 'reservations', component: IndexReservationsComponent },
   { path: 'searchFlight', component: SearchFlightComponent },
   { path: 'flight/:id', component: FlightDetailsComponent},
+  { path: 'reservation/:code', component: ReservationComponent},
+  {path: 'flightDashboard', component: FlightManagmentComponent }
 
+  
 ];
 
 @NgModule({

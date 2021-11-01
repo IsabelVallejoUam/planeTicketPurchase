@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+
+
 
 @Component({
   selector: 'app-passanger-form',
@@ -20,7 +21,7 @@ export class PassangerFormComponent implements OnInit {
 
   Url = "http://algo"; 
 
-  constructor(private fb: FormBuilder, private http: HttpClient ) { }
+  constructor(private fb: FormBuilder ) { }
 
 
 ngOnInit(): void {
@@ -28,11 +29,6 @@ ngOnInit(): void {
 
 
 submitForm() {
-  this.http.post(this.Url, this.PassangerForm.value).subscribe(
-    (response) => (console.log(response),    window.alert("Passanger Added Succesfully")),
-    (error) =>  (console.log(error),    window.alert("Passanger NOT Added Succesfully"))
-  )
-
   
 }
 

@@ -1,8 +1,11 @@
+import { Seat } from "./seat-model";
+
 export interface Passanger {
-    id: number;
+    id: string;
     name: string;
     lastname: string;
     id_type: string;
     age: number;
     flight_reservation: number;
+    seat?: Seat;
 }
