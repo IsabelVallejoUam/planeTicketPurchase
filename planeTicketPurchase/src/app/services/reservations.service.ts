@@ -25,15 +25,15 @@ export class ReservationService {
     return of(reservation);
   }
 
-  deleteReservation(code: string): string {
+  deleteReservation(code: string): void {
     for( var i = 0; i < RESERVATIONS.length; i++){ 
                                    
       if ( RESERVATIONS[i].code === code) { 
         RESERVATIONS.splice(i, 1); 
           i--; 
+          console.log("borre una reserva");
       }
   }
-  return "Reserva Borrada";
   }
 
   addReservation(reservation: Reservation): void {

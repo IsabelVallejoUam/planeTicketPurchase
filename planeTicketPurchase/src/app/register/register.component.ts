@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { City } from '../models/city-model';
+import { FormBuilder } from '@angular/forms';
+
 import { Router } from '@angular/router';
-import { Airport } from '../models/airport-model';
-import { AirportsService } from '../services/airports.service';
-import { CitiesService } from '../services/cities.service';
-import { FlightsService } from '../services/flights.service';
+import { UsersService } from '../services/users.service';
+
 
 
 @Component({
@@ -14,14 +13,20 @@ import { FlightsService } from '../services/flights.service';
 })
 export class RegisterComponent implements OnInit {
 
-  cities: City[] = [];
-  airports: Airport[] = [];
+  userForm = this.fb.group({
+    id: [''],
+    name: [''],
+    phone: [''],
+    lastname: [''],
+    id_type: [''],
+    email: [''],
+    birthdate: [''],
+  });
 
-  constructor(private cityService:CitiesService, private airportsService:AirportsService) { }
+  constructor(private fb: FormBuilder, private userService: UsersService) { }
 
   ngOnInit() {
-    this.getCities();
-    this.getAirports();
+
   }
 
   ngAfterViewInit(): void{
@@ -29,12 +34,13 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  getCities(): void {
-    this.cityService.getCities().subscribe(cities => {this.cities = cities});
-  }
+  submitForm(){
 
-  getAirports(): void {
-    this.airportsService.getAirports().subscribe(airports => {this.airports = airports});
+    this.userForm.controls['id'].setValue(10);
+    console.log(this.userForm.value);
+    this.userService.addUser(this.userForm.value);
+
+    
   }
 
 

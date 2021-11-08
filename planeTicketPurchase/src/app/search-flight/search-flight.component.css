@@ -1,11 +1,13 @@
-.container{
-    margin-top: 10%;
-}
-
-span, input{
-    width: 30%;
-}
-
-.option{
+div.form-row{
     display: flex;
+    margin-bottom: 2%;
+    margin-left: 22%;
+}
+
+.col-md-3{
+    margin-right: 2%;
+}
+
+.date{
+    width: 17%;
 }

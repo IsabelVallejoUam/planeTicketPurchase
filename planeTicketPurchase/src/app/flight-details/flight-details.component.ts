@@ -113,10 +113,12 @@ export class FlightDetailsComponent implements OnInit {
   getAirportName(id1:number, id2:number): void{
     this.airports.forEach(airport => {
       if(airport.id == id1){
+        console.log(airport.name);
         var text = document.createTextNode(airport.name);
             document.getElementById("depart-airport")?.appendChild(text)
       }
       if(airport.id == id2){
+        console.log(airport.name);
         var text = document.createTextNode(airport.name);
             document.getElementById("landing-airport")?.appendChild(text)
       }

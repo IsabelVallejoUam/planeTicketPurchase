@@ -130,8 +130,17 @@ export class IndexReservationsComponent implements OnInit {
     });
   }
 
-  cancelReservation(code: string){
-    var reserv = this.reservations.find(r => r.code === code);
-    window.alert("RESERVA BORRADA    "+ reserv?.code );
+  cancelReservation(code: string) {
+    window.alert('RESERVA BORRADA   ' + code);
+    this.reservationService.deleteReservation(code);
+
+    for( var i = 0; i < this.reservations.length; i++){ 
+                                   
+      if ( this.reservations[i].code === code) { 
+        this.reservations.splice(i, 1); 
+          i--; 
+      }
+  }
+
   }
 }

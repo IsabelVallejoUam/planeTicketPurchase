@@ -8,44 +8,37 @@ import { Flight } from '../models/flight-model';
 import { AirportsService } from './airports.service';
 import { CitiesService } from './cities.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class FlightsService {
-
-  
   airports: Airport[] = [];
 
-
-  constructor(  private airportService: AirportsService) { }
-
+  constructor(private airportService: AirportsService) {}
 
   getAirports(): void {
-    this.airportService.getAirports().subscribe(airports => {this.airports = airports});
+    this.airportService.getAirports().subscribe((airports: Airport[]) => {
+      this.airports = airports;
+    });
   }
 
-  getAirportId( cityId: number): any {
-    console.log("busco air");
-    this.airports.forEach(airport => {
-      if(airport.city_id == cityId){
-        console.log("encontre"+ airport.id);
-        return airport.id;
-      }
-      return 0;
-    });
+  getAirportId(cityId: number): any {
+    this.getAirports();
+    const airports = this.airports.filter((airport) => airport.city_id == cityId);
+    if (airports) {
+      return airports;
+    }
+    return null;
   }
 
   getFlightsCity(city1: number, city2: number): Observable<Flight[]> {
     this.getAirports();
-    var airport1 = this.getAirportId(city1);
-    console.log(city1+"airpoert="+airport1);
-    var airport2 = this.getAirportId(city2);
-    //airports sale undefined :s
-    const flights = FLIGHTS.filter(res => (res.departure_airport == 2 && res.destination_airport == 3 ))!;
+    var airports1 = this.getAirportId(city1);
+    var airports2 = this.getAirportId(city2);
+    //HACER UN FOR EACH PARA RECORRER LOS ARREGLOS
+
+    const flights = FLIGHTS.filter(
+      (res) =>(res.departure_airport == airports1[0].id && res.destination_airport == airports2[0].id))!;
     return of(flights);
   }
-
-
 
   getFlights(): Observable<Flight[]> {
     const flight = of(FLIGHTS);
@@ -53,23 +46,21 @@ export class FlightsService {
   }
 
   getFlight(id: number): Observable<Flight> {
-    const flight = FLIGHTS.find(f => f.id === id)!;
+    const flight = FLIGHTS.find((f) => f.id === id)!;
     return of(flight);
   }
 
   deleteFlight(id: number): string {
-    for( var i = 0; i < FLIGHTS.length; i++){ 
-                                   
-      if ( FLIGHTS[i].id === id) { 
-        FLIGHTS.splice(i, 1); 
-          i--; 
+    for (var i = 0; i < FLIGHTS.length; i++) {
+      if (FLIGHTS[i].id === id) {
+        FLIGHTS.splice(i, 1);
+        i--;
       }
-  }
-  return "Reserva Borrada";
+    }
+    return 'Reserva Borrada';
   }
 
   addFlight(flight: Flight): void {
     FLIGHTS.push(flight);
-}
-
+  }
 }
