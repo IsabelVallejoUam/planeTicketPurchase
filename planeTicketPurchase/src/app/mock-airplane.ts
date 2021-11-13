@@ -14,7 +14,7 @@ function fillSeat(row:number,column:number,first:number) {
       }
     }
   } 
-  console.log(seats);
+
   return seats;
 }
 
@@ -25,4 +25,3 @@ export const AIRPLANES: Airplane[] = [
     {id:4, passanger_capacity:700, model: "Boenig-4000", seats:fillSeat(175,4,10)},
   ];
 
-  console.log(AIRPLANES);

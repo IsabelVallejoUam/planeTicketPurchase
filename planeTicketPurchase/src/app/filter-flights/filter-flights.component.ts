@@ -40,7 +40,6 @@ export class FilterFlightsComponent implements OnInit {
     this.flightService
       .getFlightsCity(city1, city2)
       .subscribe((flights) => {this.flights = flights});
-      console.log(this.flights);
   }
 
   getCities(): void {

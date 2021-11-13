@@ -4,51 +4,17 @@
     text-align: center;
     margin-left: 10%;
 }
-.total-time{
-    margin-left: -40%;
-}
-.hour-city-group{
-    margin: 0% 3%;
-    display: inline-grid;
-    font-size: x-large;
-    font-weight: bolder;
-}
 
-.flight-separator-line{
-    vertical-align: super;
-}
-
-.flight-detail-group{
-    display: inline-grid;
-    margin-right: 5%;
-    vertical-align: text-bottom;
-    font-size: large;
-
-}
-
-.price{
-    font-size: xx-large;
-    font-weight:900;
-}
-
-.start-info{
-    margin-left: 28%;
-}
-
-.info{
-    margin-top: 1%;
-    text-align: left;
-    margin-left: 33%;
-    padding: 0%  5% 2% 7% ;
+.form-control{
+    text-align: center;
 }
 
 h3{
-    font-weight: bolder;
+    margin-top: 2%;
+    margin-bottom: 0% !important;
+    font-weight: bold;
 }
 
-.reservation-code{
-    font-weight: bolder;
-    font-size: large;
-    margin-bottom: 3%;
+button{
+    margin: 3% 2% 0% 0%;
 }
-

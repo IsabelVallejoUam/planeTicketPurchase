@@ -51,10 +51,8 @@ export class SearchFlightComponent implements OnInit {
     let city1 = this.flightForm.get('city_dep')!.value;
     let city2 = this.flightForm.get('city_arr')!.value;
     let date = this.flightForm.get('date_dep')!.value;
-    console.log(date);
     var date2 = Date.parse(this.flightForm.get('date_dep')?.value);
     var dateTime = new Date(date2); 
-    console.log(dateTime);
     this.redirectTo('filtered-flights/' + city1 + '/' + city2);
   }
 

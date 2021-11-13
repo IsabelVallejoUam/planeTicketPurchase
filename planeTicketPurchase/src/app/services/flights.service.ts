@@ -57,10 +57,21 @@ export class FlightsService {
         i--;
       }
     }
-    return 'Reserva Borrada';
+    return 'Vuelo Borrado';
   }
 
   addFlight(flight: Flight): void {
     FLIGHTS.push(flight);
   }
+
+  updateFlight(flight: Flight){
+
+      let updateItem = FLIGHTS.find((f) => f.id === flight.id)!;
+      console.log("flight"+updateItem.id);
+      let index = FLIGHTS.indexOf(updateItem);
+      console.log("original"+index);
+      FLIGHTS[index] = flight;
+      console.log("nuevo"+FLIGHTS[index].airline);
+    }
+  
 }

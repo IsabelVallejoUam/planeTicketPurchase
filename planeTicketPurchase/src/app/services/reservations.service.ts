@@ -31,7 +31,6 @@ export class ReservationService {
       if ( RESERVATIONS[i].code === code) { 
         RESERVATIONS.splice(i, 1); 
           i--; 
-          console.log("borre una reserva");
       }
   }
   }

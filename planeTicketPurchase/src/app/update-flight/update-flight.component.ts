@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Flight } from '../models/flight-model';
 
@@ -26,7 +26,8 @@ export class UpdateFlightComponent implements OnInit {
     private airportsService: AirportsService,
     private airplaneService: AirplaneService,
     private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {}
 
   flight!: Flight;
@@ -35,6 +36,7 @@ export class UpdateFlightComponent implements OnInit {
   airplanes: Airplane[] = [];
 
   flightForm = this.fb.group({
+    id:[''],
     dateTime: [''],
     price: [''],
     duration: [''],
@@ -53,8 +55,14 @@ export class UpdateFlightComponent implements OnInit {
   }
 
   fillForm(){
+
+    var flightdate = this.flight.dateTime;
+    flightdate.setMinutes(flightdate.getMinutes() - flightdate.getTimezoneOffset());
+    var dateString = flightdate.toISOString().slice(0,16);
+
     this.flightForm.patchValue({
-      dateTime: this.flight.dateTime,
+      id: Number(this.route.snapshot.paramMap.get('id')),
+      dateTime: dateString,
       price: this.flight.price,
       duration: this.flight.duration,
       plane_id: this.flight.plane_id,
@@ -104,11 +112,19 @@ export class UpdateFlightComponent implements OnInit {
   }
 
   deleteFlight(){
-
+    window.alert('VUELO BORRADA' + this.flight.id);
+    this.flightService.deleteFlight(this.flight.id);
   }
 
   submitForm(){
-
+    this.flight = this.flightForm.value;
+    var date = Date.parse(this.flightForm.get('dateTime')?.value);
+    this.flight.dateTime = new Date(date); 
+    
+    this.flightService.updateFlight(this.flight);
+    window.alert('VUELO ACTUALIZADO' + this.flight.id);
+    this.router.navigate(['/manageFlights']);
+    
   }
 }
 

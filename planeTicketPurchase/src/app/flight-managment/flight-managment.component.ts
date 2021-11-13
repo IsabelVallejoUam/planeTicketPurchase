@@ -55,13 +55,12 @@ export class FlightManagmentComponent implements OnInit {
   submitForm(){
     window.alert("new flight added");
 
-
+    //EL ID DEBE SER EL TAMA;O DEL ARREGLO MAS UNO
     this.flightForm.controls['id'].setValue(10);
     const flightData: Flight = this.flightForm.value;
     var date = Date.parse(this.flightForm.get('dateTime')?.value);
     flightData.dateTime = new Date(date); 
-    console.log(this.flightForm.value);
-    this.flightService.addFlight(this.flightForm.value);
+    this.flightService.addFlight(flightData);
 
     
   }

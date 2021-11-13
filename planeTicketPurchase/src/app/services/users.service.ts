@@ -13,8 +13,6 @@ export class UsersService {
 
   addUser(user: User): void {
     USERS.push(user);
-
-    console.log(USERS);
   }
 
 }
