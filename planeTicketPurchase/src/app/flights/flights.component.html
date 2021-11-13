@@ -1,13 +1,13 @@
 <div class="container">
   <div class="flight-container"  *ngFor="let flight of flights">
     <div>
-      <span class="total-time" id="duration{{flight.id}}" ></span><br>
-      <span class="total-time" id="date-flight{{flight.id}}"></span>
+      <span class="total-time" id="duration{{flight.id}}" >{{transfromTime(flight.duration)}}</span><br>
+      <span class="total-time" id="date-flight{{flight.id}}"> {{flight.dateTime|date:'MMM d, y'}} </span>
     </div>
     <span class="time-location-info">
       <span class="hour-city-group">
-        <span class="hour" id="depart-hour{{flight.id}}"></span>
-        <span class="city" id="depart-city{{flight.id}}"></span>
+        <span class="hour" id="depart-hour{{flight.id}}"> {{flight.dateTime|date:'hh:mm a'}}</span>
+        <span class="city" id="depart-city{{flight.id}}"> {{getCityAlias(flight.departure_airport)}}</span>
       </span>
       <span>
         <span class="flight-separator-line"> ____________________ </span>
@@ -19,8 +19,8 @@
         <span class="flight-separator-line"> ____________________ </span>
       </span>
       <span class="hour-city-group">
-        <span class="hour" id="landing-hour{{flight.id}}"></span>
-        <span class="city" id="landing-city{{flight.id}}"></span>
+        <span class="hour" id="landing-hour{{flight.id}}">{{getLandingTime(flight.dateTime, flight.duration) | date: 'hh:mm  a'}}</span>
+        <span class="city" id="landing-city{{flight.id}}">{{getCityAlias(flight.destination_airport)}}</span>
       </span>
     </span>
     <span class="flight-detail-group">
@@ -28,6 +28,6 @@
       <button type="submit" routerLink="/flight/{{flight.id}}"  >Detalles Vuelo
       </button>
     </span>
-    <span class="price"> ${{ flight.price }}COP </span>
+    <span class="price">{{flight.price | currency:'COP':'symbol'}} </span>
   </div>
 </div>

@@ -20,6 +20,8 @@ import { PassangerFormComponent } from './passanger-form/passanger-form.componen
 import { IndexReservationsComponent } from './index-reservations/index-reservations.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { FilterFlightsComponent } from './filter-flights/filter-flights.component';
+import { UpdateFlightsComponent } from './update-flights/update-flights.component';
+import { UpdateFlightComponent } from './update-flight/update-flight.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { FilterFlightsComponent } from './filter-flights/filter-flights.componen
     SeatSelectorComponent,
     PassangerFormComponent,
     IndexReservationsComponent,
-    FilterFlightsComponent
+    FilterFlightsComponent,
+    UpdateFlightsComponent,
+    UpdateFlightComponent
   ],
   imports: [
     BrowserModule,

@@ -1,55 +1,45 @@
 
   
 <div class="container">
-  <form [formGroup]="flightForm" class="form" (ngSubmit)="submitForm()">
-    AEROPUERTO SALIDA <br />
-    <span class="option">
-      <select formControlName="departure_airport" class="form-control" required>
-        <option value="" selected disabled>SELECCIONE AEROPUERTO SALIDA</option>
-        <option *ngFor="let airport of airports" value="{{ airport.id }}" required>
-          {{ airport.name }}
-        </option>
+  <form [formGroup]="userForm" class="form" (ngSubmit)="submitForm()">
+    <div >
+      CORREO
+      <input required type="email" formControlName="email" placeholder="CORREO"/>
+    </div>
+    <div >
+      NOMBRE
+      <input required type="text" formControlName="name" placeholder="NOMBRE"/>
+    </div>
+    <div >
+      APELLIDO
+      <input required type="text" formControlName="lastname" placeholder="APELLIDO" />
+    </div>
+    TIPO DOCUMENTO <br />
+    <div class="option">
+      <select formControlName="id_type" class="form-control" id="id" required>
+        <option value="" selected disabled>SELECCIONE  DOCUMENTO</option>
+        <option  value="Pasaporte" required> PASAPORTE</option>
+        <option  value="cedulaCiudadania" required> CEDULA CIUDADANIA</option>
       </select>
-    </span>
-    AEROPUERTO LLEGADA <br />
-    <span class="option">
-      <select formControlName="destination_airport" class="form-control" required>
-        <option value="" selected disabled>
-          SELECCIONE AEROPUERTO LLEGADA
-        </option>
-        <option *ngFor="let airport of airports" value="{{ airport.id }}" required>
-          {{ airport.name }}
-        </option>
-      </select>
-    </span>
-    <span >
-      FECHA VUELO
-      <input required type="date" formControlName="dateTime" value="" min="2021-11-11T00:00"
-        max="2022-12-31T00:00" />
-    </span>
-    <p></p>
-    <span>
-      DURACION <i>(min)</i>
-      <input required formControlName="duration" type="number" class="form-control" placeholder="DURACION" />
-    </span>
-    AVION <br />
-    <span class="option">
-      <select formControlName="plane_id" class="form-control" required>
-        <option value="" selected disabled>SELECCIONE AVION</option>
-        <option *ngFor="let plane of airplanes" value="{{ plane.id }}" required>
-          {{ plane.model }}
-        </option>
-      </select>
-    </span>
-    <span>
-      AEROLINEA
-      <input required formControlName="airline" type="text" class="form-control" placeholder="Avianca" />
-    </span>
-    <span>
-      PRECIO COP
-      <input required formControlName="price" type="number" class="form-control" placeholder="PRECIO" />
-    </span>
+    </div>
+    <div >
+      NUMERO DOCUMENTO IDENTIFICACION
+      <input  required type="text" formControlName="id" placeholder="IDENTIFICACION"/>
+    </div>
+    <div >
+      FECHA NACIMIENTO
+      <input required type="date" formControlName="birthdate" value="" min="1000-11-11"
+        max="2003-12-31" />
+    </div>
+    <div >
+      TELÉFONO
+      <input required type="number" formControlName="phone" placeholder="TELEFONO"/>
+    </div>
+    <div >
+      CLAVE
+      <input required type="password" formControlName="password" placeholder="*****" />
+    </div>
 
-    <button type="submit" [disabled]="!flightForm.valid">Submit</button>
+    <button type="submit" [disabled]="!userForm.valid">Submit</button>
   </form>
 </div>

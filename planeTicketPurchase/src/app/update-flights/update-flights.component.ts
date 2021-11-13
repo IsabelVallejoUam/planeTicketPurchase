@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { City } from '../models/city-model';
 import { Flight } from '../models/flight-model';
-import { Router } from '@angular/router';
+
 import { Airport } from '../models/airport-model';
 import { AirportsService } from '../services/airports.service';
 import { CitiesService } from '../services/cities.service';
 import { FlightsService } from '../services/flights.service';
 
 @Component({
-  selector: 'app-flights',
-  templateUrl: './flights.component.html',
-  styleUrls: ['./flights.component.css']
+  selector: 'app-update-flights',
+  templateUrl: './update-flights.component.html',
+  styleUrls: ['./update-flights.component.css']
 })
-export class FlightsComponent implements OnInit {
+export class UpdateFlightsComponent implements OnInit {
 
   flights: Flight[] = [];
   cities: City[] = [];
@@ -59,6 +59,5 @@ export class FlightsComponent implements OnInit {
     let city =  this.cities.find(city => city.id == airport!.city_id);
     return city!.alias;
   }
-
 
 }

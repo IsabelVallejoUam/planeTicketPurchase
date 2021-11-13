@@ -47,11 +47,20 @@ export class SearchFlightComponent implements OnInit {
     });
   }
 
-  //ES LENTO PERO SIRVE
   submitForm() {
     let city1 = this.flightForm.get('city_dep')!.value;
     let city2 = this.flightForm.get('city_arr')!.value;
-    console.log('ciudades: ' + city1 + '/' + city2);
-    this.router.navigate(['filtered-flights/' + city1 + '/' + city2]);
+    let date = this.flightForm.get('date_dep')!.value;
+    console.log(date);
+    var date2 = Date.parse(this.flightForm.get('date_dep')?.value);
+    var dateTime = new Date(date2); 
+    console.log(dateTime);
+    this.redirectTo('filtered-flights/' + city1 + '/' + city2);
   }
+
+  redirectTo(uri:string){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate([uri]));
+ }
+
 }

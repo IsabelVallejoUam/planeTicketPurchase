@@ -6,4 +6,5 @@ export interface User {
     id_type: string;
     email: string;
     birthdate: Date;
+    password: string;
 }

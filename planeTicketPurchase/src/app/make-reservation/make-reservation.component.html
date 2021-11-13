@@ -15,7 +15,7 @@
 <div class="service-info row"> <h4>INFORMACION SOBRE SERVICIOS</h4>
     <div class="ind-service col" *ngFor="let service of services" >
         <span> NOMBRE: {{service.name}}</span>
-        <span> PRECIO: ${{service.price}} COP</span>
+        <span> PRECIO: {{service.price | currency:'COP':'symbol'}}$</span>
         <span> DESCRIPCION {{service.description}}</span>
     </div>
 </div>

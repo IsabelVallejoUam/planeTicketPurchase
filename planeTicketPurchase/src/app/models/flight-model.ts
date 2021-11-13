@@ -1,3 +1,7 @@
+
+
+import { SeatFlight } from "./seat-flight-model";
+
 export interface Flight {
     id: number;
     dateTime: Date;
@@ -7,6 +11,6 @@ export interface Flight {
     departure_airport: number;
     destination_airport: number;
     airline: string;
-    seats?: number;
+    flight_seats?: SeatFlight[];
 
 }

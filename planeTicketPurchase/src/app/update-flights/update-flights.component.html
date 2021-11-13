@@ -1,5 +1,5 @@
 <div class="container">
-  <span>
+  <div class="flight-container"  *ngFor="let flight of flights">
     <div>
       <span class="total-time" id="duration{{flight.id}}" >{{transfromTime(flight.duration)}}</span><br>
       <span class="total-time" id="date-flight{{flight.id}}"> {{flight.dateTime|date:'MMM d, y'}} </span>
@@ -23,18 +23,11 @@
         <span class="city" id="landing-city{{flight.id}}">{{getCityAlias(flight.destination_airport)}}</span>
       </span>
     </span>
-  <span class="flight-detail-group">
-    <span> {{ flight.airline }} {{ flight.id }} </span>
-    <button type="submit" routerLink="/flight/{{flight.id}}">Detalles Vuelo>
-    </button>
-  </span>
-  <span class="price"> {{flight.price | currency:'COP':'symbol'}} $ </span>
-<div class="info">
-  <div> <b>Numero Vuelo: </b>{{flight.airline}}{{flight.id}}</div>
-  <div id="depart-airport"> <b>Aeropuerto Despegue: </b></div>
-  <div id="landing-airport"> <b> Aeropuerto Aterrizaje: </b></div>
+    <span class="flight-detail-group">
+      <span> {{ flight.airline }} {{ flight.id }} </span>
+      <button type="submit" routerLink="/manageFlight/{{flight.id}}"  >Cambiar Detalles Vuelo
+      </button>
+    </span>
+    <span class="price">{{flight.price | currency:'COP':'symbol'}} </span>
+  </div>
 </div>
-<div class="reserva-from" *ngIf="Reservavisible"> 
-  <app-make-reservation></app-make-reservation>
-</div>
-<button (click)="showForm()"> HACER RESERVA </button>

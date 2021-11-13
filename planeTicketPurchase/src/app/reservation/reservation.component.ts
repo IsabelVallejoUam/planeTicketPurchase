@@ -41,7 +41,6 @@ export class ReservationComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.appendInfo();
   }
 
   getReservation(): void {
@@ -73,91 +72,29 @@ export class ReservationComponent implements OnInit {
     });
   }
 
-  transfromTime(min: number, id: number): void {
-    var hours = Math.floor(min / 60);
+  
+  transfromTime(min: number): string {
+    var hours = Math.floor(min / 60);          
     var minutes = min % 60;
-    var text = document.createTextNode(+hours + 'H ' + minutes + 'Min');
-    document.getElementById('duration' + id)?.appendChild(text);
+    var text = ("Duracion vuelo: "+hours+"H "+minutes+"Min");
+    return text;
   }
 
-  appendInfo() {
-    this.transfromTime(this.flight.duration, this.flight.id);
-    this.getHoursMinutes(
-      this.flight.dateTime,
-      this.flight.duration,
-      this.flight.id
-    );
-    this.getDepDate(this.flight.dateTime, this.flight.id);
-    this.getCityAlias(
-      this.flight.id,
-      this.flight.departure_airport,
-      this.flight.destination_airport
-    );
-    this.getAirportName(
-      this.flight.departure_airport,
-      this.flight.destination_airport
-    );
-  }
-
-  getHoursMinutes(date: Date, min: number, id: number): void {
-    //Departure TIME
-    var hour = date.getHours();
-    var minute = date.getMinutes();
-    var text = document.createTextNode(hour + ':' + minute);
-    document.getElementById('depart-hour' + id)?.appendChild(text);
-
-    //Landing TIME
+  getLandingTime(date: Date, min:number ): Date {
     var date1 = date.getTime();
-    var duration = min * 60 * 1000;
+    var duration = (min * 60 * 1000);
     var newDateObj = new Date(date1 + duration);
-    var hour2 = newDateObj.getHours();
-    var minute2 = newDateObj.getMinutes();
-    var text2 = document.createTextNode(hour2 + ':' + minute2);
-    document.getElementById('landing-hour' + id)?.appendChild(text2);
+    return newDateObj;
+
   }
 
-  getDepDate(date: Date, id: number): void {
-    var day = date.getDay();
-    var month = date.getMonth() + 1;
-    var year = date.getFullYear();
-    var newDate = day + '/' + month + '/' + year;
-    var text = document.createTextNode(newDate);
-    document.getElementById('date-flight' + id)?.appendChild(text);
+
+  getCityAlias(airportID: number): string {
+    let airport = this.airports.find(airport => airport.id == airportID);
+    let city =  this.cities.find(city => city.id == airport!.city_id);
+    return city!.alias;
   }
 
-  getAirportName(id1: number, id2: number): void {
-    this.airports.forEach((airport) => {
-      if (airport.id == id1) {
-        var text = document.createTextNode(airport.name);
-        document.getElementById('depart-airport')?.appendChild(text);
-      }
-      if (airport.id == id2) {
-        var text = document.createTextNode(airport.name);
-        document.getElementById('landing-airport')?.appendChild(text);
-      }
-    });
-  }
-
-  getCityAlias(id: number, airport1: number, airport2: number): void {
-    this.airports.forEach((airport) => {
-      if (airport.id == airport1) {
-        this.cities.forEach((city) => {
-          if (city.id == airport.city_id) {
-            var text = document.createTextNode(city.alias);
-            document.getElementById('depart-city' + id)?.appendChild(text);
-          }
-        });
-      }
-      if (airport.id == airport2) {
-        this.cities.forEach((city) => {
-          if (city.id == airport.city_id) {
-            var text = document.createTextNode(city.alias);
-            document.getElementById('landing-city' + id)?.appendChild(text);
-          }
-        });
-      }
-    });
-  }
 
   cancelReservation() {
     window.alert('RESERVA BORRADA    ' + this.reservation.code);

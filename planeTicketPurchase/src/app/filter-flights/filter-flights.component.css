@@ -29,3 +29,8 @@
     font-size: xx-large;
     font-weight:900;
 }
+.flight-container{
+    border-style: groove;
+    padding-bottom: 4%;
+    padding-top: 2%;
+}

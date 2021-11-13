@@ -5,14 +5,14 @@
         CODIGO RESERVA <br> {{reservation.code}}
       </div>
       <span>
-        <div class="start-info" style="margin-bottom: 3%;">
-          <span class="total-time" id="duration{{flight.id}}"><b>Duracion vuelo: </b></span><br>
-          <span class="total-time" id="date-flight{{flight.id}}"><b>Fecha vuelo: </b></span>
+        <div>
+          <span class="total-time" id="duration{{flight.id}}" >{{transfromTime(flight.duration)}}</span><br>
+          <span class="total-time" id="date-flight{{flight.id}}"> {{flight.dateTime|date:'MMM d, y'}} </span>
         </div>
         <span class="time-location-info">
           <span class="hour-city-group">
-            <span class="hour" id="depart-hour{{flight.id}}"></span>
-            <span class="city" id="depart-city{{flight.id}}"></span>
+            <span class="hour" id="depart-hour{{flight.id}}"> {{flight.dateTime|date:'hh:mm a'}}</span>
+            <span class="city" id="depart-city{{flight.id}}"> {{getCityAlias(flight.departure_airport)}}</span>
           </span>
           <span>
             <span class="flight-separator-line"> ____________________ </span>
@@ -24,8 +24,8 @@
             <span class="flight-separator-line"> ____________________ </span>
           </span>
           <span class="hour-city-group">
-            <span class="hour" id="landing-hour{{flight.id}}"></span>
-            <span class="city" id="landing-city{{flight.id}}"></span>
+            <span class="hour" id="landing-hour{{flight.id}}">{{getLandingTime(flight.dateTime, flight.duration) | date: 'hh:mm  a'}}</span>
+            <span class="city" id="landing-city{{flight.id}}">{{getCityAlias(flight.destination_airport)}}</span>
           </span>
         </span>
         <div class="extra-info">
@@ -53,12 +53,12 @@
           <div class=" info" *ngFor="let service of services">
             <div><b>NOMBRE: </b>{{service.name}}</div>
             <div><b>DESCRIPCION: </b>{{service.description}}</div>
-            <div><b>PRECIO: </b>{{service.price}}</div>
+            <div><b>PRECIO: </b>{{service.price | currency:'COP':'symbol'}} $</div>
           </div>
         </div>
         <h3>PRECIO TOTAL</h3>
         <div class="Reservation-info info">
-          <div> <b>Precio Reserva: </b>{{reservation.price}}COP</div>
+          <div> <b>Precio Reserva: </b>{{reservation.price | currency:'COP':'symbol'}} $</div>
         </div>
       </span>
       <div class="actions info">

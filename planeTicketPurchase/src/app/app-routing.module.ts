@@ -12,6 +12,8 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { FlightManagmentComponent } from './flight-managment/flight-managment.component';
 import { MakeReservationComponent } from './make-reservation/make-reservation.component';
 import { FilterFlightsComponent } from './filter-flights/filter-flights.component';
+import { UpdateFlightsComponent } from './update-flights/update-flights.component';
+import { UpdateFlightComponent } from './update-flight/update-flight.component';
 
 
 const routes: Routes = [
@@ -26,7 +28,8 @@ const routes: Routes = [
   { path: 'flightDashboard', component: FlightManagmentComponent },
   { path: 'newReservation', component: MakeReservationComponent},
   { path: 'filtered-flights/:city1/:city2', component: FilterFlightsComponent},
-
+  { path: 'manageFlights', component: UpdateFlightsComponent },
+  { path: 'manageFlight/:id', component: UpdateFlightComponent },
 
   
 ];

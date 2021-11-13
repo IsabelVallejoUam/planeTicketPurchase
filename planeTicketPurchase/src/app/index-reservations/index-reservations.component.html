@@ -1,50 +1,51 @@
 <div class="result-box container">
-    <div class="result-container" *ngFor="let reservation of reservations">
-      <div class="flight-info">
+  <div class="result-container" *ngFor="let reservation of reservations">
+    <div class="flight-info">
+      <div>
         <div class="reservation-code">
           CODIGO RESERVA <br> {{reservation.code}}
         </div>
-        <div class="start-info" style="margin-bottom: 3%;">
-          <span class="total-time" id="duration{{reservation.flight.id}}"><b>Duracion vuelo: </b></span><br>
-          <span class="total-time" id="date-flight{{reservation.flight.id}}"><b>Fecha vuelo: </b></span>
-        </div>
-        <span class="time-location-info">
-          <span class="hour-city-group">
-            <span class="hour" id="depart-hour{{reservation.flight.id}}"></span>
-            <span class="city" id="depart-city{{reservation.flight.id}}"></span>
-          </span>
-          <span>
-            <span class="flight-separator-line"> ____________________ </span>
-          </span>
-          <span>
-            <span class="material-icons"> flight_takeoff </span>
-          </span>
-          <span>
-            <span class="flight-separator-line"> ____________________ </span>
-          </span>
-          <span class="hour-city-group">
-            <span class="hour" id="landing-hour{{reservation.flight.id}}"></span>
-            <span class="city" id="landing-city{{reservation.flight.id}}"></span>
-          </span>
+        <span class="total-time" id="duration{{reservation.flight.id}}">{{transfromTime(reservation.flight.duration)}}</span><br>
+        <span class="total-time" id="date-flight{{reservation.flight.id}}"> {{reservation.flight.dateTime|date:'MMM d, y'}} </span>
+      </div>
+      <span class="time-location-info">
+        <span class="hour-city-group">
+          <span class="hour" id="depart-hour{{reservation.flight.id}}"> {{reservation.flight.dateTime|date:'hh:mm a'}}</span>
+          <span class="city" id="depart-city{{reservation.flight.id}}">
+            {{getCityAlias(reservation.flight.departure_airport)}}</span>
         </span>
-        <div class="extra-info">
-          <h3>VUELO</h3>
-          <div class="info">
-            <div> <b>Numero Vuelo: </b>{{reservation.flight.airline}}{{reservation.flight.id}}</div>
-            <div id="depart-airport{{reservation.flight.id}}"> <b>Aeropuerto Despegue: </b></div>
-            <div id="landing-airport{{reservation.flight.id}}"> <b> Aeropuerto Aterrizaje: </b></div>
-          </div>
-        </div>
-        <h3>PRECIO TOTAL</h3>
-        <div class="Reservation-info info">
-          <div> <b>Precio Reserva: </b>{{reservation.price}}COP</div>
-        </div>
-        <div class="actions info">
-          <button type="submit" routerLink="/reservation/{{reservation.code}}">Mas Información</button>
-            <button type="submit" (click)="cancelReservation(reservation.code)">Cancelar Reserva</button>
-        </div>
+        <span>
+          <span class="flight-separator-line"> ____________________ </span>
+        </span>
+        <span>
+          <span class="material-icons"> flight_takeoff </span>
+        </span>
+        <span>
+          <span class="flight-separator-line"> ____________________ </span>
+        </span>
+        <span class="hour-city-group">
+          <span class="hour" id="landing-hour{{reservation.flight.id}}">{{getLandingTime(reservation.flight.dateTime,
+            reservation.flight.duration) | date: 'hh:mm a'}}</span>
+          <span class="city"
+            id="landing-city{{reservation.flight.id}}">{{getCityAlias(reservation.flight.destination_airport)}}</span>
+        </span>
+      </span>
+    </div>
+    <div class="extra-info">
+      <h3>VUELO</h3>
+      <div class="info">
+        <div> <b>Numero Vuelo: </b>{{reservation.flight.airline}}{{reservation.flight.id}}</div>
+        <div id="depart-airport{{reservation.flight.id}}"> <b>Aeropuerto Despegue: </b></div>
+        <div id="landing-airport{{reservation.flight.id}}"> <b> Aeropuerto Aterrizaje: </b></div>
       </div>
     </div>
+    <h3>PRECIO TOTAL</h3>
+    <div class="Reservation-info info">
+      <div> <b>Precio Reserva: </b>{{reservation.price}}COP</div>
+    </div>
+    <div class="actions info">
+      <button type="submit" routerLink="/reservation/{{reservation.code}}">Mas Información</button>
+      <button type="submit" (click)="cancelReservation(reservation.code)">Cancelar Reserva</button>
+    </div>
   </div>
-
-  
+</div>

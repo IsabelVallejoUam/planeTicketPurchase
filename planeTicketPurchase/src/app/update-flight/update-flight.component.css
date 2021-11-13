@@ -1,13 +1,12 @@
 .container{
     padding: 2%;
-    text-align: center;
-}
-
-.result-container{
     border-style: groove;
-    margin-bottom: 3%;
+    text-align: center;
+    margin-left: 10%;
 }
-
+.total-time{
+    margin-left: -40%;
+}
 .hour-city-group{
     margin: 0% 3%;
     display: inline-grid;
@@ -50,5 +49,6 @@ h3{
 .reservation-code{
     font-weight: bolder;
     font-size: large;
-    margin: 3% 0%;
+    margin-bottom: 3%;
 }
+

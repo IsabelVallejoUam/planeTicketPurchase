@@ -1,7 +1,7 @@
 export interface Seat {
     id: number;
-    plane_position: string;
+    column: number;
+    row: number;
     class: string;
-    status: string;
     
 }
