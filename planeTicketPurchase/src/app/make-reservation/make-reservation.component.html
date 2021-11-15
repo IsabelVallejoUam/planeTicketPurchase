@@ -1,16 +1,18 @@
+<from [formGroup]="reservationForm" class="form" (ngSubmit)="submitForm()">
 <app-passanger-form *ngFor="let passanger of numberPassangers"></app-passanger-form>
-
 <div class="container">
     <button (click)="addPassanger()">Adicionar Pasajero </button>
     <div class="service" *ngFor="let numservice of numberServices">
-        <select style="margin-top: 1%;">
+        <select formControlName="service" class="form-control" style="margin-top: 1%;">
             <option value="" selected disabled >SELECCIONE SERVICOS EXTRA</option>    
             <option  *ngFor="let service of services" value="{{service.id}}" required> {{service.name}}</option>
         </select>
     </div>
-    <button (click)="addService()" >Adicionar Servicio </button>
-</div>
 
+    <button (click)="addService()" >Adicionar Servicio </button>
+    <button type="submit" [disabled]="!reservationForm.valid">Adicionar Servicio </button>
+</div>
+</from>
 <div class=" container">
 <div class="service-info row"> <h4>INFORMACION SOBRE SERVICIOS</h4>
     <div class="ind-service col" *ngFor="let service of services" >

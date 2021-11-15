@@ -20,6 +20,8 @@ export class FlightDetailsComponent implements OnInit {
   flight!: Flight;
   cities: City[] = [];
   airports: Airport[] = [];
+  reservaVisible = false;
+  showReserve = true;
 
   ngOnInit(): void {
     this.getCities();
@@ -54,15 +56,20 @@ export class FlightDetailsComponent implements OnInit {
 
   }
 
-
   getCityAlias(airportID: number): string {
     let airport = this.airports.find(airport => airport.id == airportID);
     let city =  this.cities.find(city => city.id == airport!.city_id);
     return city!.alias;
   }
 
-  Reservavisible = false;
+  getAirportName(airportID:number): string{
+    let airport = this.airports.find(airport => airport.id == airportID);
+      return airport!.name;
+  }
+
   showForm(){
-    this.Reservavisible = true;
+    this.reservaVisible = true;
+    this.showReserve = false;
+    
   }
 }

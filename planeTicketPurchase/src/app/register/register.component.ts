@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
     const UserData: User = this.userForm.value;
     var date = Date.parse(this.userForm.get('birthdate')?.value);
     UserData.birthdate = new Date(date); 
-    this.userService.addUser(this.userForm.value);
+    this.userService.addUser(UserData);
   }
 
 

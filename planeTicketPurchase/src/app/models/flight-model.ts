@@ -11,6 +11,6 @@ export interface Flight {
     departure_airport: number;
     destination_airport: number;
     airline: string;
-    flight_seats?: SeatFlight[];
+    flight_seats: SeatFlight[];
 
 }

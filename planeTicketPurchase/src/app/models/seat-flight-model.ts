@@ -1,7 +1,7 @@
 export interface SeatFlight {
     id: number;
     column:number;
-    row:number;
+    row:string;
     class: string;
     status: number;
     

@@ -32,8 +32,8 @@
           <h3>VUELO</h3>
           <div class="info">
             <div> <b>Numero Vuelo: </b>{{flight.airline}}{{flight.id}}</div>
-            <div id="depart-airport"> <b>Aeropuerto Despegue: </b></div>
-            <div id="landing-airport"> <b> Aeropuerto Aterrizaje: </b></div>
+            <div id="depart-airport"> <b>Aeropuerto Despegue: </b>{{getAirportName(flight.departure_airport)}} </div>
+            <div id="landing-airport"> <b> Aeropuerto Aterrizaje: </b>{{getAirportName(flight.destination_airport)}}</div>
           </div>
         </div>
       </span>

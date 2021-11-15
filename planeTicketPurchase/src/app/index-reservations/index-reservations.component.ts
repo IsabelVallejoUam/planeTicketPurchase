@@ -60,7 +60,11 @@ export class IndexReservationsComponent implements OnInit {
     return newDateObj;
 
   }
-
+  
+  getAirportName(airportID:number): string{
+    let airport = this.airports.find(airport => airport.id == airportID);
+      return airport!.name;
+  }
 
   getCityAlias(airportID: number): string {
     let airport = this.airports.find(airport => airport.id == airportID);

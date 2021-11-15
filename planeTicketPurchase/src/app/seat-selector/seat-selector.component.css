@@ -1,0 +1,22 @@
+.seat-container{
+    height: 300px;
+    width: 30%;
+    padding: 10px;
+    white-space: nowrap;
+    overflow-y: scroll; 
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.form-check-input.free.economy {
+    background-color: #2196F3;
+}
+
+.form-check-input.free.first {
+    background-color: #21f32c;
+}
+
+.form-check-input.occupied {
+    background-color: #df1818;
+}

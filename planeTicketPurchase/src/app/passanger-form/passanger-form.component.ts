@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Airplane } from '../models/airplane-model';
+import { Flight } from '../models/flight-model';
+import { AirplaneService } from '../services/airplane.service';
+import { FlightsService } from '../services/flights.service';
 
 
 
@@ -10,23 +15,23 @@ import { FormBuilder } from '@angular/forms';
 })
 export class PassangerFormComponent implements OnInit {
 
-  
   PassangerForm = this.fb.group({
+    id: [''],
     name: [''],
     lastname: [''],
     id_type: [''],
     age: [''],
     flight_reservation: [''],
+    seat: [''],
   });
 
-  Url = "http://algo"; 
 
-  constructor(private fb: FormBuilder ) { }
+  constructor(private fb: FormBuilder) { }
 
 
 ngOnInit(): void {
+ 
 }
-
 
 
 }

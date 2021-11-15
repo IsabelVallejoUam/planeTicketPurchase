@@ -1,1 +1,23 @@
-<p>seat-selector works!</p>
+
+<div class="seat-container">
+    <span class="seat-row" *ngFor="let rows of seating; let x = index">
+        <div *ngFor="let column of seating[x]; let y = index">
+            <div class="form-check form-check-inline" *ngIf="seating[x][y].status === 1; else elseBlock">
+                <input class="form-check-input occupied" type="radio" name="seatSelector" id="seatSelector" value="{{seating[x][y].id}}" disabled/>
+                <label class="form-check-label" for="inlineRadio1">{{ seating[x][y].row }}{{ seating[x][y].column}}</label>
+            </div>
+            <ng-template #elseBlock>
+                <div class="form-check form-check-inline" *ngIf="seating[x][y].class === economy; else elseElseBlock">
+                    <input class="form-check-input free economy" type="radio" name="seatSelector" id="seatSelector" value="{{seating[x][y].id}}"/>
+                    <label class="form-check-label" for="inlineRadio1">{{ seating[x][y].row }}{{ seating[x][y].column}}</label>
+                </div>
+            </ng-template>
+            <ng-template #elseElseBlock>
+                <input class="form-check-input free first" type="radio" name="seatSelector" id="seatSelector" value="{{seating[x][y].id}}"/>
+                <label class="form-check-label" for="inlineRadio1">{{ seating[x][y].row }}{{ seating[x][y].column}}</label>
+            </ng-template>
+
+            <br />
+        </div>
+    </span>
+</div>

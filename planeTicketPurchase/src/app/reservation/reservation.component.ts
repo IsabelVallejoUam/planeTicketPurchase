@@ -71,7 +71,11 @@ export class ReservationComponent implements OnInit {
       this.airports = airports;
     });
   }
-
+  
+  getAirportName(airportID:number): string{
+    let airport = this.airports.find(airport => airport.id == airportID);
+      return airport!.name;
+  }
   
   transfromTime(min: number): string {
     var hours = Math.floor(min / 60);          

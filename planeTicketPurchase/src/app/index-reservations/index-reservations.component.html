@@ -35,8 +35,8 @@
       <h3>VUELO</h3>
       <div class="info">
         <div> <b>Numero Vuelo: </b>{{reservation.flight.airline}}{{reservation.flight.id}}</div>
-        <div id="depart-airport{{reservation.flight.id}}"> <b>Aeropuerto Despegue: </b></div>
-        <div id="landing-airport{{reservation.flight.id}}"> <b> Aeropuerto Aterrizaje: </b></div>
+        <div id="depart-airport"> <b>Aeropuerto Despegue: </b>{{getAirportName(reservation.flight.departure_airport)}} </div>
+        <div id="landing-airport"> <b> Aeropuerto Aterrizaje: </b>{{getAirportName(reservation.flight.destination_airport)}}</div>
       </div>
     </div>
     <h3>PRECIO TOTAL</h3>

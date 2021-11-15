@@ -1,10 +1,14 @@
 .container{
     padding: 2%;
     border-style: groove;
-    text-align: center;
+
 }
 .total-time{
     margin-left: -40%;
+}
+
+.info{
+    margin: 3% 0% 3% 30%;
 }
 .hour-city-group{
     margin: 0% 3%;
@@ -28,4 +32,4 @@
 .price{
     font-size: xx-large;
     font-weight:900;
-}
+} 

@@ -19,7 +19,7 @@ export class AirplaneService {
   }
 
   getAirplane(id: number): Observable<Airplane> {
-    const airplane = AIRPLANES.find(a => a.id === id)!;
+    const airplane = AIRPLANES.find(a => a.id == id)!;
     return of(airplane);
   }
 

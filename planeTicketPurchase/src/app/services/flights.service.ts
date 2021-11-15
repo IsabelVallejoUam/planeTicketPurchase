@@ -20,24 +20,32 @@ export class FlightsService {
     });
   }
 
-  getAirportId(cityId: number): any {
+  getAirportId(cityId: number): Airport[] {
     this.getAirports();
     const airports = this.airports.filter((airport) => airport.city_id == cityId);
     if (airports) {
       return airports;
     }
-    return null;
+    return [];
   }
 
   getFlightsCity(city1: number, city2: number): Observable<Flight[]> {
     this.getAirports();
     var airports1 = this.getAirportId(city1);
     var airports2 = this.getAirportId(city2);
-    //HACER UN FOR EACH PARA RECORRER LOS ARREGLOS
 
-    const flights = FLIGHTS.filter(
-      (res) =>(res.departure_airport == airports1[0].id && res.destination_airport == airports2[0].id))!;
-    return of(flights);
+    //HACER UN FOR EACH PARA RECORRER LOS ARREGLOS
+    var searchedFlights: Flight[] = [];
+
+    airports1.forEach(element => {
+      airports2.forEach(element2 => {
+        searchedFlights = FLIGHTS.filter(
+          (res) =>(res.departure_airport == element.id && res.destination_airport == element2.id))!;
+        return of(searchedFlights);
+      });
+    });
+
+    return of(searchedFlights);
   }
 
   getFlights(): Observable<Flight[]> {
@@ -67,11 +75,8 @@ export class FlightsService {
   updateFlight(flight: Flight){
 
       let updateItem = FLIGHTS.find((f) => f.id === flight.id)!;
-      console.log("flight"+updateItem.id);
       let index = FLIGHTS.indexOf(updateItem);
-      console.log("original"+index);
       FLIGHTS[index] = flight;
-      console.log("nuevo"+FLIGHTS[index].airline);
     }
   
 }

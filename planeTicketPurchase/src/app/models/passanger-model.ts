@@ -1,4 +1,4 @@
-import { Seat } from "./seat-model";
+import { SeatFlight } from "./seat-flight-model";
 
 export interface Passanger {
     id: string;
@@ -7,5 +7,5 @@ export interface Passanger {
     id_type: string;
     age: number;
     flight_reservation: number;
-    seat?: Seat;
+    seat?: SeatFlight;
 }
